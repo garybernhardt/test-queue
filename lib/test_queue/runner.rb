@@ -119,7 +119,7 @@ module TestQueue
 
     # Run the tests.
     #
-    # If exit_when_done is true, exit! will be called before this method
+    # If exit_when_done is true, exit will be called before this method
     # completes. If exit_when_done is false, this method will return an Integer
     # number of failures.
     def execute
@@ -130,7 +130,7 @@ module TestQueue
       exitstatus = summarize_internal
 
       if exit_when_done
-        exit! exitstatus
+        exit exitstatus
       else
         exitstatus
       end
@@ -300,7 +300,7 @@ module TestQueue
           after_fork_internal(num, iterator)
           ret = run_worker(iterator) || 0
           cleanup_worker
-          exit! ret
+          exit ret
         end
 
         @workers[pid] = Worker.new(pid, num)
